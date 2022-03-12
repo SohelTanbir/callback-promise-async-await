@@ -84,20 +84,20 @@ function production() {
 
 const shop_open = true;
 
-function Order(time, work){
-    return new Promise(function(resolved, rejected){
-        
-        if(shop_open){
-          setTimeout(() => {
-            // work is getting done here
-            resolved(work())
-          }, time);
-        }else{
+function Order(time, work) {
+    return new Promise(function (resolved, rejected) {
+
+        if (shop_open) {
+            setTimeout(() => {
+                // work is getting done here
+                resolved(work())
+            }, time);
+        } else {
             rejected(console.log("our shop is closed"));
         }
     })
 }
-Order(2000, ()=> console.log(`${stocks.fruits[2]} was selected`))
+Order(2000, () => console.log(`${stocks.fruits[2]} was selected`))
 // .then(()=> Order(0000, ()=> console.log("Production has started ")))
 // .then(()=> Order(2000, ()=>console.log("fruit has bee chopped")))
 // .then(()=> Order(2000, ()=>console.log("fruit has bee chopped")))
@@ -111,14 +111,14 @@ Order(2000, ()=> console.log(`${stocks.fruits[2]} was selected`))
 // async and await
 
 // a normal way to promse
-function takeOrder(){
-    return new Promise((resoloved, rejected)=>{
+function takeOrder() {
+    return new Promise((resoloved, rejected) => {
         // write code here
     })
 }
 
 // in async and await promise handle
-async function takeOrder(){
+async function takeOrder() {
     // write code here
     console.log("async and await system");
 }
@@ -126,15 +126,15 @@ async function takeOrder(){
 
 // use of await keyword
 
-function topping_choice(){
-    return new Promise(function(resoloved, rejected){
-       setTimeout(() => {
-        resoloved(console.log("which topping would you like?"))
-       }, 3000);
+function topping_choice() {
+    return new Promise(function (resoloved, rejected) {
+        setTimeout(() => {
+            resoloved(console.log("which topping would you like?"))
+        }, 3000);
     })
 }
 
-async function kitchen(){
+async function kitchen() {
     console.log("1");
     console.log("2");
     console.log("3");
@@ -142,4 +142,35 @@ async function kitchen(){
     console.log("4");
     console.log("5");
 }
-kitchen();
+// kitchen();
+
+// real use of async and await
+
+function getData() {
+    console.log("call getdata method");
+    return (
+        fetch(`https://jsonplaceholder.typicode.com/users`)
+        .then(res => res.json())
+        .then(users => users)
+    )
+
+}
+
+
+
+// do some using async function
+async function show() {
+    try {
+        const users = await getData();
+        console.log(users[0].id);
+        console.log("Total user =", users);
+        console.log("call show method");
+    }
+    catch (err) {
+        console.log(err.message);
+    }
+
+
+
+}
+show()
