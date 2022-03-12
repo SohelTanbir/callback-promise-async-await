@@ -98,12 +98,48 @@ function Order(time, work){
     })
 }
 Order(2000, ()=> console.log(`${stocks.fruits[2]} was selected`))
-.then(()=> Order(0000, ()=> console.log("Production has started ")))
-.then(()=> Order(2000, ()=>console.log("fruit has bee chopped")))
-.then(()=> Order(2000, ()=>console.log("fruit has bee chopped")))
-.then(()=> Order(1000, ()=>console.log(`${stocks.liquied[0]} and ${stocks.liquied[1]} added`)))
-.then(()=> Order(2000, ()=>console.log(`${stocks.holder[1]} container selected`)))
-.then(()=> Order(3000, ()=>console.log(`${stocks.toppings[1]} toppings is selected`)))
-.then(()=> Order(2000, ()=>console.log("serve ice cream ")))
-.catch((err)=> console.log("Customer has gone!"))
-.finally(()=> console.log("end of day"))
+// .then(()=> Order(0000, ()=> console.log("Production has started ")))
+// .then(()=> Order(2000, ()=>console.log("fruit has bee chopped")))
+// .then(()=> Order(2000, ()=>console.log("fruit has bee chopped")))
+// .then(()=> Order(1000, ()=>console.log(`${stocks.liquied[0]} and ${stocks.liquied[1]} added`)))
+// .then(()=> Order(2000, ()=>console.log(`${stocks.holder[1]} container selected`)))
+// .then(()=> Order(3000, ()=>console.log(`${stocks.toppings[1]} toppings is selected`)))
+// .then(()=> Order(2000, ()=>console.log("serve ice cream ")))
+// .catch((err)=> console.log("Customer has gone!"))
+// .finally(()=> console.log("end of day"));
+
+// async and await
+
+// a normal way to promse
+function takeOrder(){
+    return new Promise((resoloved, rejected)=>{
+        // write code here
+    })
+}
+
+// in async and await promise handle
+async function takeOrder(){
+    // write code here
+    console.log("async and await system");
+}
+
+
+// use of await keyword
+
+function topping_choice(){
+    return new Promise(function(resoloved, rejected){
+       setTimeout(() => {
+        resoloved(console.log("which topping would you like?"))
+       }, 3000);
+    })
+}
+
+async function kitchen(){
+    console.log("1");
+    console.log("2");
+    console.log("3");
+    const topping_choose = await topping_choice();
+    console.log("4");
+    console.log("5");
+}
+kitchen();
